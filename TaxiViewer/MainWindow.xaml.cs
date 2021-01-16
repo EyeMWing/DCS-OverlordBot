@@ -85,6 +85,17 @@ namespace TaxiViewer
                 {
                     MessageBox.Show("Error reading Airfield JSON", "Deserialization Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                try
+                {
+                    var json = JsonConvert.SerializeObject(airfield, Formatting.Indented);
+
+                    //Write to temp dir file.
+                    File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp", "markers.json"), json);
+                }
+                catch (Exception _)
+                {
+                    MessageBox.Show("Error writing Airfield JSON", "Serialization Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -98,6 +109,17 @@ namespace TaxiViewer
             catch (Exception _)
             {
                 MessageBox.Show("Error reading Airfield JSON", "Deserialization Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            try
+            {
+                var json = JsonConvert.SerializeObject(airfield, Formatting.Indented);
+
+                //Write to temp dir file.
+                File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp", "markers.json"), json);
+            }
+            catch (Exception _)
+            {
+                MessageBox.Show("Error writing Airfield JSON", "Serialization Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
